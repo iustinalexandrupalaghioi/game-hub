@@ -4,7 +4,8 @@ const ColorModeSwitch = () => {
   const { toggleColorMode, colorMode } = useColorMode();
   const colorModeText =
     colorMode.charAt(0).toUpperCase() +
-    colorMode.substring(1, colorMode.length);
+    colorMode.substring(1, colorMode.length) +
+    " Mode";
   return (
     <HStack>
       <Switch
