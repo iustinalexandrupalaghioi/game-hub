@@ -10,6 +10,7 @@ import SortFilter from "./components/SortFilter";
 export interface gameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  sort: string | null;
 }
 
 const App = () => {
@@ -44,7 +45,10 @@ const App = () => {
               setGameQuery({ ...gameQuery, platform })
             }
           />
-          <SortFilter />
+          <SortFilter
+            sort={gameQuery.sort}
+            setSort={(sort) => setGameQuery({ ...gameQuery, sort })}
+          />
         </HStack>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
