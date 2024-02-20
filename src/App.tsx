@@ -10,12 +10,18 @@ const App = () => {
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
+      templateColumns={{
+        base: "1fr",
+        lg: "200px 1fr",
+      }}
     >
       <GridItem gridArea="nav">
         <NavBar />
       </GridItem>
       <Show above="1024px">
-        <GridItem gridArea="aside"><GenreList/></GridItem>
+        <GridItem gridArea="aside" paddingX={5}>
+          <GenreList />
+        </GridItem>
       </Show>
       <GridItem gridArea="main">
         <GameGrid />
