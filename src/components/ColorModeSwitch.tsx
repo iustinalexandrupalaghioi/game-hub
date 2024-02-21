@@ -13,7 +13,7 @@ const ColorModeSwitch = () => {
         onChange={toggleColorMode}
         colorScheme="green"
       />
-      <Text>{colorModeText}</Text>
+      <Text width='max-content'>{colorModeText}</Text>
     </HStack>
   );
 };
