@@ -5,6 +5,7 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
+import { sortOrders } from "../data/sortOrder";
 
 import { BsChevronDown } from "react-icons/bs";
 
@@ -14,15 +15,7 @@ interface Props {
 }
 const SortFilter = ({ setSort, sort }: Props) => {
   
-  const sortOrders = [
-    { value: "name", label: "Name" },
-    { value: "-released", label: "Date Realesed" },
-    { value: "-added", label: "Added" },
-    { value: "-created", label: "Created" },
-    { value: "-updated", label: "Updated" },
-    { value: "-rating", label: "Rating" },
-    { value: "-metacritic", label: "Popularity" },
-  ];
+  
 
   const order = sortOrders.find(filter => filter.value === sort);
   return (
