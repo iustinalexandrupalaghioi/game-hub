@@ -3,7 +3,7 @@ import useGames from "../hooks/useGames";
 import CardSkeleton from "./CardSkeleton";
 import GameCard from "./GameCard";
 import GameCardContainer from "./GameCardContainer";
-import { Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 
 interface Props {
   gameQuery: gameQuery;
