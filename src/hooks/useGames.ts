@@ -12,16 +12,10 @@ export interface Game {
   metacritic: number;
   rating_top: number;
 }
-interface infiniteQueryParam {
-  pageSize: number;
-}
 
-const useGames = (
-  gameQuery: gameQuery | null,
-  pageSize: infiniteQueryParam
-) => {
+const useGames = (gameQuery: gameQuery | null) => {
   return useInfiniteQuery({
-    queryKey: ["games", gameQuery, pageSize],
+    queryKey: ["games", gameQuery],
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {

@@ -11,7 +11,6 @@ interface Props {
 }
 
 const GameGrid = ({ gameQuery }: Props) => {
-  const pageSize = 10;
   const {
     data,
     error,
@@ -19,9 +18,7 @@ const GameGrid = ({ gameQuery }: Props) => {
     fetchNextPage,
     isFetchingNextPage,
     hasNextPage,
-  } = useGames(gameQuery, {
-    pageSize,
-  });
+  } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <Box padding={"10px"}>
