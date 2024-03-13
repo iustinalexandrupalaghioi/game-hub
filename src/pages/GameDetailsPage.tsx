@@ -1,9 +1,8 @@
+import { Box, Heading, Spinner, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import useGameDetails from "../hooks/useGameDetails";
-import { Heading, Spinner, Text } from "@chakra-ui/react";
-
-import ErrorPage from "./ErrorPage";
 import ExpandableText from "../components/ExpandableText";
+import GameAttributes from "../components/GameAttributes";
+import useGameDetails from "../hooks/useGameDetails";
 
 const GameDetailsPage = () => {
   const { slug } = useParams();
@@ -18,11 +17,19 @@ const GameDetailsPage = () => {
         </Text>
       </>
     );
-  if (error || !game) return <ErrorPage />;
+  if (error || !game)
+    return (
+      <Box padding={5}>
+        <Heading>Oops</Heading>
+        <Text>Unexpected error occured</Text>
+      </Box>
+    );
+
   return (
     <div>
       <Heading>{game.name}</Heading>
       <ExpandableText>{game.description_raw}</ExpandableText>
+      <GameAttributes game={game} />
     </div>
   );
 };
