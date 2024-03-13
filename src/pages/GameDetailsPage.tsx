@@ -6,7 +6,9 @@ import { Heading, Spinner, Text } from "@chakra-ui/react";
 const GameDetailsPage = () => {
   const { slug } = useParams();
   const { data: game, error, isLoading } = useGameDetails(slug!);
-  if (error) return <ErrorPage />;
+
+  if (error || !game) return <ErrorPage />;
+
   if (isLoading)
     return (
       <>
@@ -16,10 +18,11 @@ const GameDetailsPage = () => {
         </Text>
       </>
     );
+
   return (
     <div>
-      <Heading>{game?.name}</Heading>
-      <Text>{game?.description_raw}</Text>
+      <Heading>{game.name}</Heading>
+      <Text>{game.description_raw}</Text>
     </div>
   );
 };
