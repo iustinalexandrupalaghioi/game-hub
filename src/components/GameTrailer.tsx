@@ -22,7 +22,7 @@ const GameTrailer = ({ id }: Props) => {
     );
 
   return movies?.results[0] ? (
-    <video controls>
+    <video controls width={"650px"}>
       <source src={movies?.results[0].data.max} type="video/mp4" />
       <p>Your browser cannot play the provided video file.</p>
     </video>
