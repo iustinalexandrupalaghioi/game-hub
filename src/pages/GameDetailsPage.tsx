@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import useGameDetails from "../hooks/useGameDetails";
-import ErrorPage from "./ErrorPage";
 import { Heading, Spinner, Text } from "@chakra-ui/react";
+
+import ErrorPage from "./ErrorPage";
+import ExpandableText from "../components/ExpandableText";
 
 const GameDetailsPage = () => {
   const { slug } = useParams();
   const { data: game, error, isLoading } = useGameDetails(slug!);
-
-  if (error || !game) return <ErrorPage />;
 
   if (isLoading)
     return (
@@ -18,11 +18,11 @@ const GameDetailsPage = () => {
         </Text>
       </>
     );
-
+  if (error || !game) return <ErrorPage />;
   return (
     <div>
       <Heading>{game.name}</Heading>
-      <Text>{game.description_raw}</Text>
+      <ExpandableText>{game.description_raw}</ExpandableText>
     </div>
   );
 };
