@@ -1,10 +1,12 @@
-import { Box, Heading, Spinner, Text } from "@chakra-ui/react";
+import { Box, Heading, Image, Spinner, Text } from "@chakra-ui/react";
 import useGameTrailes from "../hooks/useGameTrailers";
 interface Props {
   id: number;
 }
 const GameTrailer = ({ id }: Props) => {
-  const { data: movies, error, isLoading } = useGameTrailes(id!);
+  const { data: movies, error, isLoading } = useGameTrailes(id);
+  console.log(movies);
+
   if (isLoading)
     return (
       <Text>
@@ -19,11 +21,13 @@ const GameTrailer = ({ id }: Props) => {
       </Box>
     );
 
-  return (
+  return movies?.results[0] ? (
     <video controls>
       <source src={movies?.results[0].data.max} type="video/mp4" />
       <p>Your browser cannot play the provided video file.</p>
     </video>
+  ) : (
+    <Image src={movies?.results[0]?.preview} />
   );
 };
 
