@@ -5,7 +5,6 @@ interface Props {
 }
 const GameTrailer = ({ id }: Props) => {
   const { data: movies, error, isLoading } = useGameTrailes(id);
-  console.log(movies);
 
   if (isLoading)
     return (
